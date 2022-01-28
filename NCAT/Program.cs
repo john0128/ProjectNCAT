@@ -14,7 +14,7 @@ namespace NCAT
         {
             Console.Title = "NCAT CLI Enviornment"; //콘솔 창 제목
             string doc = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); //doc에 내 문서 경로 저장
-            string folpath = doc + "/NCAT Saves"; //내 문서 폴더에 NCAT Saves라는 폴더를 만들기 위해 folpath에 경로 지정
+            string folpath = doc + "/NCAT Saves"; //내 문서 폴더에 NCAT Saves라는 폴더를 만들기 위해 경로 지정
             DirectoryInfo di = new DirectoryInfo(folpath); 
             if (di.Exists == false) //만약 내 문서에 NCAT Saves가 없다면 생성
             {

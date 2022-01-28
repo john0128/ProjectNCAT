@@ -41,9 +41,25 @@ namespace NCAT
                     Console.WriteLine("help");
                     Command();
                 }
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Unavailable Command!\nPlease Use Another Command");
-                Command(); //만약 지정된 명령어가 아닐 경우 빨간 글씨로 위 문구 출력
+                else if (Input == "exit") //나가기 명령어
+                {
+                    Environment.Exit(0);
+                }
+
+                else if (Input == "pwd") //현재 경로를 나타내는 명령어
+                {
+                    Console.WriteLine("C:\\Users\\Default User\\Documents\\NCAT Saves");
+                }
+                /*if (Input == "d")
+                {
+
+                }*/
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Unavailable Command!\nPlease Use Another Command");
+                    Command(); //만약 지정된 명령어가 아닐 경우 빨간 글씨로 위 문구 출력
+                }
             }
         }
     }
