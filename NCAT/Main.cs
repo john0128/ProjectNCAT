@@ -10,14 +10,16 @@ namespace NCAT
 {
     internal class Main
     {
+        public int shutdownminute;
+        public int rebootminute;
         public void StartProgram()
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("|");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("Developed By NineJuan N913");
+            Console.Write("Developed By NineJuan N913"); //제작자 표시
             Console.ForegroundColor= ConsoleColor.Green; 
-            Console.Write("|"); //제작자 표시
+            Console.Write("|"); 
             Console.WriteLine("");
             Console.WriteLine("");//한칸 띄기
             Command();
@@ -44,16 +46,51 @@ namespace NCAT
                 else if (Input == "exit") //나가기 명령어
                 {
                     Environment.Exit(0);
+                    Command();
                 }
 
                 else if (Input == "pwd") //현재 경로를 나타내는 명령어
                 {
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("C:\\Users\\Default User\\Documents\\NCAT Saves");
+                    Command();
                 }
-                /*if (Input == "d")
+                else if (Input == "shutdown -h now")
+                {
+                    System.Diagnostics.Process.Start("cmd", "shutdown -s -t 00");
+                    Command();
+                }
+                else if (Input == $"shutdown -h +{shutdownminute}")
+                {
+                    System.Diagnostics.Process.Start("cmd", $"shutdown -s -t {shutdownminute * 60}");
+                    Command();
+                }
+                else if (Input == $"shutdown -r +{rebootminute}")
+                {
+                    System.Diagnostics.Process.Start("cmd", $"shutdown -r -t {rebootminute*60}");
+                    Command();
+                }
+                /*else if (Input == "")
+                {
+
+                }
+                else if (Input == "d")
+                {
+
+                }
+                else if (Input == "d")
+                {
+
+                }
+                else if (Input == "d")
+                {
+
+                }
+                else if (Input == "d")
                 {
 
                 }*/
+
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
