@@ -10,8 +10,10 @@ namespace NCAT
 {
     internal class Main
     {
+        public string mainpath = "C:/Users/Public/Documents/NCAT Saves";
         public int shutdownminute;
         public int rebootminute;
+        public string mkdir;
         public void StartProgram()
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -62,23 +64,34 @@ namespace NCAT
                 }
                 else if (Input == $"shutdown -h +{shutdownminute}")
                 {
-                    System.Diagnostics.Process.Start("cmd", $"shutdown -s -t {shutdownminute * 60}");
+                    System.Diagnostics.Process.Start("cmd", $"shutdown -s -t {shutdownminute * 60} -c NCAT에 의한 종료");
                     Command();
                 }
                 else if (Input == $"shutdown -r +{rebootminute}")
                 {
-                    System.Diagnostics.Process.Start("cmd", $"shutdown -r -t {rebootminute*60}");
+                    System.Diagnostics.Process.Start("cmd", $"shutdown -r -t {rebootminute*60} -c NCAT에 의한 재부팅");
                     Command();
                 }
-                /*else if (Input == "")
+                else if (Input == "reboot")
                 {
-
+                    System.Diagnostics.Process.Start("cmd", "shutdown -r -t 00");
                 }
-                else if (Input == "d")
+                else if (Input == $"mkdir {mkdir}")
                 {
-
+                    string dirname = "C:/Users/Public/Documents/NCAT Saves/" + mkdir;
+                    DirectoryInfo di = new DirectoryInfo(dirname);
+                    if (di.Exists == false) //만약 내 문서에 NCAT Saves가 없다면 생성
+                    {
+                        di.Create();
+                        Command();
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Cannot Create Directory!\nAlready Exists!");
+                    }
                 }
-                else if (Input == "d")
+                /*else if (Input == "d")
                 {
 
                 }
