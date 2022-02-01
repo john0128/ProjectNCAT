@@ -20,7 +20,7 @@ namespace NCAT
                 di.Create();
             }
             var main = new Main();
-            main.StartProgram();
+            main.Start();
         }
         
     }

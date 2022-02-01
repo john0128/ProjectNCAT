@@ -12,6 +12,8 @@ namespace NCAT
     {
         public string id;
         public string password;
+        public string wgetextention;
+        public string wgetfilename;
         public void fileDownload(String path, String url)
         {
             try
@@ -30,7 +32,7 @@ namespace NCAT
             var wc = new WebClient();
             try
             {
-                wc.DownloadFile(url, $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/NCAT Saves/Downloads/{System.DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")}");
+                wc.DownloadFile(url, $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/NCAT Saves/Downloads/{System.DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")}{wgetextention}");
             }
             catch (Exception e)
             {
@@ -414,6 +416,7 @@ ______                     _
                     string downloadlink = command.Substring(5);
                     try
                     {
+                        wgetextention = Path.GetExtension(command);
                         defaultfiledwn(downloadlink);
                         Commands();
                     }
@@ -423,9 +426,18 @@ ______                     _
                         Commands();
                     }
                 }
-                if (command.StartsWith("wget "))
+                if (command.StartsWith("wget -0 "))
                 {
-
+                    string dwnlink = command.Substring(8);
+                    try
+                    {
+                        wgetfilename = Path.GetFileName(command);
+                        fileDownload(dwnlink, $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/NCAT Saves/Downloads/" + wgetfilename);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                    }
                 }
                 if (command == "")
                 {
