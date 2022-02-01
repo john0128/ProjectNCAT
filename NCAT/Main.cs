@@ -179,7 +179,7 @@ namespace NCAT
                 }
                 if (command == "999999999")
                 {
-                    Color lime = Color.FromArgb(51, 255, 51);
+                    System.Drawing.Color lime = System.Drawing.Color.FromArgb(51, 255, 51);
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine(" _____ ");
                     Console.WriteLine("|  _  |");
