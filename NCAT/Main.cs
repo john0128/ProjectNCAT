@@ -428,16 +428,9 @@ ______                     _
                 }
                 if (command.StartsWith("wget -0 "))
                 {
-                    string dwnlink = command.Substring(8);
-                    try
-                    {
-                        wgetfilename = Path.GetFileName(command);
-                        fileDownload(dwnlink, $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/NCAT Saves/Downloads/" + wgetfilename);
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex);
-                    }
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Not Support!");
+                    Commands(); 
                 }
                 if (command == "")
                 {
